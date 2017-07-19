@@ -179,19 +179,14 @@ def play(agent1, agent2):
 if __name__ == '__main__':
     a1 = Agent(1, lossval=-1)
     a2 = Agent(2, lossval=-1)
-    with open('/Users/lavesh/PycharmProjects/tictactoe/filename1.pickle', 'rb') as handle:
-        c = pickle.load(handle)
-    a2.values = c
     start = time.time()
-    for i in range(5000000):
-        if i%1000000==0:
-            print i
+    for i in range(10000000):
         winner = play(a2, a1)
         a1.episode_over(winner)
         a2.episode_over(winner)
     end = time.time()
     print end-start
-    with open('filename1.pickle', 'wb') as handle:
+    with open('computerfirst.pickle', 'wb') as handle:
         pickle.dump(a2.values, handle, protocol=pickle.HIGHEST_PROTOCOL)
     '''
     a1.verbose = True
